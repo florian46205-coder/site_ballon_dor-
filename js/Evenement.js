@@ -1,24 +1,22 @@
 class Evenement {
-  constructor() {
-  }
-
-  heureFin() {
-    const heures = Number(this..slice(0, 2));
-    const minutes = Number(this..slice(3, 5));
-    const total = heures * 60 + minutes + this.;
-
-    let h = Math.floor(total / 60) % 24;
-    let m = total % 60;
-    if (h < 10) h = "0" + h;
-    if (m < 10) m = "0" + m;
-
-    return h + ":" + m;
+  constructor(annee, nom, age, club, stats, image) {
+    this.annee = annee;
+    this.nom = nom;
+    this.age = age;
+    this.club = club;
+    this.stats = stats;
+    this.image = image; 
   }
 
   carte() {
     return `
-      <li class="carte">
-        <h3>${}</h3>
-      </li>`;
+      <li class="carte" data-annee="${this.annee}">
+        <img src="${this.image}" alt="${this.nom}" class="photo-joueur">
+        <span class="annee">${this.annee}</span>
+        <h3>${this.nom}</h3>
+        <p class="details">${this.age} ans · ${this.club}</p>
+        <p class="stats">${this.stats}</p>
+      </li>
+    `;
   }
 }
